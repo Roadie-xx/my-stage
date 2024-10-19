@@ -39,3 +39,36 @@ That said, the following branches will be created;
 
 Normally I would set up systems for (automatic) testing, but for now I decided to skip them. 
 This is basicly because it is a time consuming task.
+
+
+## During Development
+
+First I've tried the Symfony way to use a docker `https://symfony.com/doc/current/setup/docker.html`, but somehow it failed.
+
+Also a simple , found on Google, did not work.
+`https://medium.com/@oumaymaneffati/the-easy-way-to-install-symfony-with-docker-b6fca3997d2c`
+
+So I falled back on my knowledge of Alpine dockers, but ended up using `https://www.twilio.com/en-us/blog/get-started-docker-symfony` which also failed. The problem was that the Dockerfile tried to copy a file from the Symfony installer. This installer created an other directory, once I changed that, the container could be created.
+
+Could not add the ./app directory to my repository. It seems there was a .git folder in the app
+rm -r app/.git/
+
+## Time registration
+vr 4-6 uur research
+za 2-3 uur writing readme and creating docker
+za 1 uur trouble adding Symfony to repository
+
+
+## Helpfull commands
+### Build Docker Container
+docker compose build --no-cache
+docker compose up --build
+
+docker-compose exec php /bin/bash
+
+docker run -rm -it my-stage-php /bin/bash
+
+check http://localhost:8080/
+
+symfony check:requirements
+symfony new .
