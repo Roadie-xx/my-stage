@@ -1,0 +1,122 @@
+<html>
+<head>
+</head>
+
+<body>
+<pre id="output"></pre>
+<script>
+
+const url = 'https://rickandmortyapi.com/graphql';
+
+// const query = { query: "{ hello }" };
+
+
+let query = {
+  query: `{
+    characters(page: 2, filter: { name: "rick" }) {
+	  info {
+	    count
+	  }
+	  results {
+	    name
+	  }
+    }
+    location(id: 1) {
+	  id
+    }
+    episodesByIds(ids: [1, 2]) {
+	  id
+    }
+  }`
+};
+
+// list all character in [episode | dimension | location ]
+// Characters per dimension (unknown)
+query = {
+  query: `{
+	locations(filter: {dimension: "unknown"}) {
+	  results {
+		name
+		dimension,
+		residents {
+		  id,
+		  name
+		}
+	  }
+	}
+  }`
+};
+query = {
+  query: `{
+	locations(filter: {name: "Citadel of Ricks"}) {
+	  results {
+		name
+		dimension,
+		residents {
+		  id,
+		  name
+		}
+	  }
+	}
+  }`
+};
+query = {
+  query: `{
+	episodes(filter: {name: "Pilot"}) {
+	  info {
+		count
+		pages
+		next
+		prev
+	  }
+	  results {
+		characters {
+		  id,
+		  name
+		}
+	  }
+	}
+  }`
+};
+
+
+
+
+// "Field \"id\" is not defined by type FilterCharacter."
+let rand = Math.ceil(Math.random() * 826);
+
+query = {
+  query: `{
+    charactersByIds(ids: [${rand}] ) {
+	   id,
+	   name
+    }
+  }`
+};
+
+
+
+fetch(url, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+  body: JSON.stringify(query),
+//  body: query,
+})
+  .then(r => r.json())
+  .then(data => {
+	document.querySelector('#output').innerHTML = JSON.stringify(data, null, 2);
+	console.log("data returned:", data);
+  })
+  
+  
+  
+  // Auto suggest: https://codepen.io/Pars-code/details/YzRpYMB
+  // Card
+</script>
+
+</body>
+
+</html>
