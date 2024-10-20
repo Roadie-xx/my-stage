@@ -60,6 +60,7 @@ za 2-3 uur writing readme and creating docker
 za 1 uur trouble adding Symfony to repository
 za 2 uur GraphQL Client
 zo 1 uur GraphQL Client and test controller
+zo 1 uur Welcome page with random image
 
 
 ## Helpfull commands
