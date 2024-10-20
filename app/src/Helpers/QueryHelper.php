@@ -8,7 +8,8 @@ class QueryHelper
         return sprintf('query {
             charactersByIds(ids: [%d] ) {
                 id,
-                name
+                name,
+                image
             }
         }', $id);
     }
