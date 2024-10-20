@@ -30,7 +30,8 @@ From a Product Owner view, I thougth it would be nice to create branches for eac
 That said, the following branches will be created;
 
 1. Initial phase (Create project, PoC - files)
-1. Developer framework (docker, plain Symfony, graphQL package)
+1. Developer framework (docker, plain Symfony, ~~graphQL package~~)
+1. Create GraphQL client
 1. Welcome page (show random character with info)
 1. Overview (show grid and/or table)
 1. Suggestion (search for and suggest)
@@ -57,6 +58,8 @@ rm -r app/.git/
 vr 4-6 uur research
 za 2-3 uur writing readme and creating docker
 za 1 uur trouble adding Symfony to repository
+za 2 uur GraphQL Client
+zo 1 uur GraphQL Client and test controller
 
 
 ## Helpfull commands
