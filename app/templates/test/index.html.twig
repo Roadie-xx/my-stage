@@ -1,4 +1,24 @@
-<h2>Hello</h2>
+{% extends 'base.html.twig' %}
 
-id: {{ id }}<br>
-name: {{ name }}<br>
+{% block title %}Welcome at my stage{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2>Welcome at my stage</h2>
+
+    <div class="row">
+        <div class="col-8">
+            <img src="{{ image }}" class="img-fluid rounded-3" alt="{{ name }}">
+        </div>
+
+        <div class="col-4 align-content-end">
+            <div class="fw-bold">The id</div>
+            <div class="mb-3">{{ id }}</div>
+
+            <div class="fw-bold">Character name</div>
+            <div class="mb-3">{{ name }}</div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
