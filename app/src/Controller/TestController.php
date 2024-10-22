@@ -29,7 +29,7 @@ class TestController extends AbstractController
     #[Route('/show', name: 'show')]
     public function show(GraphQLClient $client, QueryHelper $queryHelper): Response
     {
-        $type = 'location';
+        $type = 'dimension';
 
         switch ($type) {
             case 'episode':
@@ -52,7 +52,22 @@ class TestController extends AbstractController
 
                 $results = current($data['results'])['residents'];
                 break;
-                    
+
+            case 'dimension':
+                $dimension = "Unknown";
+                $query = $queryHelper->getDimension($dimension);
+                $description = sprintf('Characters in the dimension "%s"', $dimension);
+        
+                $data = $client->request('https://rickandmortyapi.com/graphql', $query, 'locations');
+
+                // Flatten resulting array
+                $results = [];
+                foreach($data['results'] as $part) {
+                    $results += $part['residents'];
+                }
+                // $results = current($data['results'])['residents'];
+                break;
+                        
             }
 
 

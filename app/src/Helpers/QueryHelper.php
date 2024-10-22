@@ -38,7 +38,6 @@ class QueryHelper
         }', $episode);
     }
 
-
     public function getLocation(string $location): string {
         return sprintf('query {
             locations(filter: {name: "%s"}) {
@@ -61,6 +60,30 @@ class QueryHelper
                 }
             }
         }', $location);
+    }
+
+    public function getDimension(string $dimension): string {
+        return sprintf('query {
+            locations(filter: {dimension: "%s"}) {
+                info {
+                    count
+                    pages
+                    next
+                    prev
+                }
+                results {
+                    residents {
+                        id,
+                        name,
+                        image,
+                        location {
+                            name
+                        },
+                        species
+                    }
+                }
+            }
+        }', $dimension);
     }
 
 }
