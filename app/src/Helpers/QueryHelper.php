@@ -13,4 +13,28 @@ class QueryHelper
             }
         }', $id);
     }
+
+    public function getEpisode(string $episode): string {
+        return sprintf('query {
+            episodes(filter: {name: "%s"}) {
+                info {
+                    count
+                    pages
+                    next
+                    prev
+                }
+                results {
+                    characters {
+                        id,
+                        name,
+                        image,
+                        location {
+                            name
+                        },
+                        species
+                    }
+                }
+            }
+        }', $episode);
+    }
 }
