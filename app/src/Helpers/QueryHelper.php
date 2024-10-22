@@ -31,7 +31,8 @@ class QueryHelper
                         location {
                             name
                         },
-                        species
+                        species,
+                        status
                     }
                 }
             }
@@ -55,7 +56,8 @@ class QueryHelper
                         location {
                             name
                         },
-                        species
+                        species,
+                        status
                     }
                 }
             }
@@ -79,7 +81,8 @@ class QueryHelper
                         location {
                             name
                         },
-                        species
+                        species,
+                        status
                     }
                 }
             }
