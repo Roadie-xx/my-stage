@@ -25,4 +25,24 @@ class TestController extends AbstractController
             current($info)
         );
     }
+
+    #[Route('/show', name: 'show')]
+    public function show(GraphQLClient $client, QueryHelper $queryHelper): Response
+    {
+        // $episode = 'Pilot';
+        $episode = 'Interdimensional Cable 2: Tempting Fate';
+
+        $query = $queryHelper->getEpisode($episode);
+
+        $data = $client->request('https://rickandmortyapi.com/graphql', $query, 'episodes');
+
+        return $this->render(
+            'test/overview.html.twig',
+            [
+                'description' => sprintf('Characters in episode "%s"', $episode),
+                'info' => $data['info'],
+                'results' => current($data['results'])['characters'],
+            ]
+        );
+    }
 }
