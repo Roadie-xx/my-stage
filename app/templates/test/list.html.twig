@@ -1,0 +1,16 @@
+<article class="grid-row">
+  <div class="row mb-1 align-items-baseline">
+    <div class="col-1">
+      <img
+        class="img-fluid rounded-2"
+        src="{{ item.image }}"
+        alt="{{ item.name }}"
+      />
+    </div>
+    <div class="col-1 text-end">{{ item.id }}</div>
+    <div class="col">{{ item.name }}</div>
+    <div class="col">{{ item.location.name }}</div>
+    <div class="col">{{ item.species }}</div>
+    <div class="col">{{ item.status }}</div>
+  </div>
+</article>

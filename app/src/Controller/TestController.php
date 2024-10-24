@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Helpers\DataCollector;
 use App\Helpers\QueryHelper;
 use App\Services\GraphQLClient;
 use App\Services\Random;
@@ -23,6 +24,30 @@ class TestController extends AbstractController
         return $this->render(
             'test/index.html.twig',
             current($info)
+        );
+    }
+
+    #[Route('/show', name: 'show')]
+    public function show(DataCollector $collector): Response
+    {
+        $type = 'episode';
+        $query = 'Interdimensional Cable 2: Tempting Fate';
+
+        $type = 'location';
+        $query = 'Citadel of Ricks';
+
+        $type = 'dimension';
+        $query = 'Unknown';
+
+        $characterCollection = $collector->collect($type, $query);
+
+        return $this->render(
+            'test/overview.html.twig',
+            [
+                'description' => $characterCollection->getDescription(),
+                'info' => $characterCollection->getInfo(),
+                'results' => $characterCollection->getData(),
+            ]
         );
     }
 }

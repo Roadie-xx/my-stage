@@ -61,6 +61,17 @@ za 1 uur trouble adding Symfony to repository
 za 2 uur GraphQL Client
 zo 1 uur GraphQL Client and test controller
 zo 1 uur Welcome page with random image
+zo 1 uur Overview page with switchable grid
+di 0.25 uur Card template
+di 1 uur Added overview page
+di 1 uur Added different overview types / Added status
+di 1 uur Autosuggestion
+wo 1,5 uur Extract bussines logic from controller
+wo 2,5 Autosuggestion
+
+
+## Nice to have improvements
+- Extract css and js from template to files
 
 
 ## Helpfull commands
