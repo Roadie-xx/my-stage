@@ -3,10 +3,11 @@
 namespace App\Services;
 
 use \Exception;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpClient\HttpOptions;
 
-class GraphQLClient
+readonly class GraphQLClient
 {
     public function __construct(
         private HttpClientInterface $client,
@@ -14,7 +15,7 @@ class GraphQLClient
     }
 
     /**
-     * @throws Exception
+     * @throws Exception|TransportExceptionInterface
      */
     public function request(string $endpoint, string $query, string $property): array
     {
