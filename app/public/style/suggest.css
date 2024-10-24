@@ -1,0 +1,31 @@
+.suggest-group {
+	display: flex;
+}
+
+.suggest #search.form-control:focus {
+    box-shadow: none;
+}
+
+.suggest .list-group {
+    position: absolute;
+    padding: .5em;
+    background: white;
+    border-radius: .5em;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.suggest .list-group li {
+    list-style: none;
+    background: white;
+    padding: .5em;
+    border-radius: .5em;
+    color: #2f3542;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.suggest .list-group li:hover {
+    background: #dfe4ea;
+}

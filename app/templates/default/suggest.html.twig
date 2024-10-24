@@ -1,0 +1,27 @@
+<div class="suggest">
+    <div class="suggest-group">
+        <div class="input-group me-3">
+            <input id="search" type="text" class="form-control" placeholder="Search" aria-label="Search" autocomplete="off">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+        </div>
+        <div class="btn-group bg-white" role="group" aria-label="Search within these groups">
+            <input type="checkbox" class="btn-check" id="search-characters" autocomplete="off">
+            <label class="btn btn-outline-success active" for="search-characters"><i class="bi bi-person-fill"></i></label>
+
+            <input type="checkbox" class="btn-check" id="search-episodes" autocomplete="off">
+            <label class="btn btn-outline-success active" for="search-episodes"><i class="bi bi-film"></i></label>
+
+            <input type="checkbox" class="btn-check" id="search-locations" autocomplete="off">
+            <label class="btn btn-outline-success active" for="search-locations"><i class="bi bi-geo-alt-fill"></i></label>
+        </div>
+    </div>
+
+    <div class="list-group"></div>
+</div>
+
+<div id="random-search" class="my-3 d-flex justify-content-around">
+    <span class="align-content-center">Choose a random</span>
+    <button type="button" class="btn btn-outline-secondary" data-source="characters">Random character</button>
+    <button type="button" class="btn btn-outline-secondary" data-source="locations">Random location</button>
+    <button type="button" class="btn btn-outline-secondary" data-source="episodes">Random episode</button>
+</div>

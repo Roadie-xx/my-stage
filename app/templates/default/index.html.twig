@@ -6,6 +6,8 @@
 <div class="container mt-4">
     <h2>Welcome at my stage</h2>
 
+    {% include 'default/suggest.html.twig' %}
+
     <div class="card mb-3 w-100">
         <div class="row g-0">
             <div class="col-md-4">
@@ -86,10 +88,21 @@
 {% block stylesheets %}
     {{ parent() }}
 
+    <link rel="stylesheet" href="/style/scrollbar.css">
+    <link rel="stylesheet" href="/style/suggest.css">
+
     <style>
         body {
             background-color: #fbfbfb;
         }
     </style>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="/javascript/suggest.js" type="module"></script>
 
 {% endblock %}
