@@ -13,6 +13,9 @@ class GraphQLClient
     ) {
     }
 
+    /**
+     * @throws Exception
+     */
     public function request(string $endpoint, string $query, string $property): array
     {
         $options = (new HttpOptions())
