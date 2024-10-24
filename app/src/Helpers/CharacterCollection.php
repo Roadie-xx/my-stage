@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use Exception;
+
 class CharacterCollection
 {
     private string $type;
@@ -9,7 +11,9 @@ class CharacterCollection
     private array $data;
     private array $info;
 
-    
+    /**
+     * @throws Exception
+     */
     public function setType(string $type): void
     {
         if (! in_array($type, ['episode', 'location', 'dimension'])) {
@@ -19,6 +23,9 @@ class CharacterCollection
         $this->type = $type;
     }
 
+    /**
+     * @throws Exception
+     */
     public function setDescription(string $query): void
     {
         if (! isset($this->type)) {
