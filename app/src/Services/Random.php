@@ -4,7 +4,7 @@ namespace App\Services;
 
 class Random
 {
-    private static $randomSeed = 0;
+    private static int $randomSeed = 0;
 
     public static function setSeed(int $seed = 0): int 
     {
