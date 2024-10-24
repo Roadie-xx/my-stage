@@ -6,19 +6,90 @@
 <div class="container mt-4">
     <h2>Welcome at my stage</h2>
 
-    <div class="row">
-        <div class="col-8">
-            <img src="{{ image }}" class="img-fluid rounded-3" alt="{{ name }}">
-        </div>
-
-        <div class="col-4 align-content-end">
-            <div class="fw-bold">The id</div>
-            <div class="mb-3">{{ id }}</div>
-
-            <div class="fw-bold">Character name</div>
-            <div class="mb-3">{{ name }}</div>
-
+    <div class="card mb-3 w-100">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ image }}" class="img-fluid rounded-start" alt="{{ name }}">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ name }}</h5>
+                    <div class="card-text">
+                        <ul class="nav nav-tabs justify-content-end" id="characterInfo" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="true">Profile</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="episodes-tab" data-bs-toggle="tab" data-bs-target="#episodes-tab-pane" type="button" role="tab" aria-controls="episodes-tab-pane" aria-selected="false">Episodes</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="characterInfoContent">
+                            <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                                <div class="row mb-1">
+                                    <div class="col-3">The id</div>
+                                    <div class="col-9 fw-bold">{{ id }}</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-3">Character name</div>
+                                    <div class="col-9 fw-bold">{{ name }}</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-3">Character status</div>
+                                    <div class="col-9 fw-bold">{{ status }}</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-3">Character gender</div>
+                                    <div class="col-9 fw-bold">{{ gender }}</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-3">Character type</div>
+                                    <div class="col-9 fw-bold">{{ type }}</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-3">First seen</div>
+                                    <div class="col-9 fw-bold">{{ origin.name }}</div>
+                                </div>
+                                <div class="row mb-1">
+                                    <div class="col-3">Current location</div>
+                                    <div class="col-9 fw-bold">{{ location.name }}</div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="episodes-tab-pane" role="tabpanel" aria-labelledby="episodes-tab" tabindex="0">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Episode</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Air date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in episode %}
+                                   <tr>
+                                        <th scope="row">{{ item.episode }}</th>
+                                        <td>{{ item.name }}</td>
+                                        <td>{{ item.air_date }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+        body {
+            background-color: #fbfbfb;
+        }
+    </style>
+
 {% endblock %}

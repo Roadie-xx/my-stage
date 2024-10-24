@@ -4,12 +4,46 @@ namespace App\Helpers;
 
 class QueryHelper
 {
+/*
     public function getCharacterInfo(int $id): string
     {
         return sprintf('query {
             charactersByIds(ids: [%d] ) {
                 id,
                 name,
+                image
+            }
+        }', $id);
+    }
+*/
+    public function getCharacterInfo(int $id): string
+    {
+        return sprintf('query {
+        	charactersByIds(ids: [%d]) {
+                id,
+                name,
+                status,
+                species,
+                type,
+                gender,
+                episode {
+                    id,
+                    name,
+                    episode,
+                    air_date
+                },
+                origin {
+                    id,
+                    name,
+                    type,
+                    dimension
+                },
+                location {
+                    id,
+                    name,
+                    type,
+                    dimension
+                },
                 image
             }
         }', $id);
