@@ -4,7 +4,8 @@ namespace App\Helpers;
 
 class QueryHelper
 {
-    public function getCharacterInfo(int $id): string {
+    public function getCharacterInfo(int $id): string
+    {
         return sprintf('query {
             charactersByIds(ids: [%d] ) {
                 id,
@@ -14,7 +15,8 @@ class QueryHelper
         }', $id);
     }
 
-    public function getEpisode(string $episode): string {
+    public function getEpisode(string $episode): string
+    {
         return sprintf('query {
             episodes(filter: {name: "%s"}) {
                 info {
@@ -39,7 +41,8 @@ class QueryHelper
         }', $episode);
     }
 
-    public function getLocation(string $location): string {
+    public function getLocation(string $location): string
+    {
         return sprintf('query {
             locations(filter: {name: "%s"}) {
                 info {
@@ -64,7 +67,8 @@ class QueryHelper
         }', $location);
     }
 
-    public function getDimension(string $dimension): string {
+    public function getDimension(string $dimension): string
+    {
         return sprintf('query {
             locations(filter: {dimension: "%s"}) {
                 info {
@@ -88,5 +92,4 @@ class QueryHelper
             }
         }', $dimension);
     }
-
 }

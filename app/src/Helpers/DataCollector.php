@@ -2,20 +2,21 @@
 
 namespace App\Helpers;
 
-use App\Helpers\CharacterCollection;
-use App\Helpers\QueryHelper;
 use App\Services\GraphQLClient;
-use App\Services\Random;
+use Exception;
 
 class DataCollector
 {
     private CharacterCollection $collection;
 
-    public function __construct(private GraphQLClient $client, private QueryHelper $queryHelper)
+    public function __construct(private readonly GraphQLClient $client, private readonly QueryHelper $queryHelper)
     {
         $this->collection = new CharacterCollection();
     }
 
+    /**
+     * @throws Exception
+     */
     public function collect(string $type, string $query): CharacterCollection
     {
         $this->collection->setType($type);
@@ -34,12 +35,15 @@ class DataCollector
             case 'dimension':
                 $this->getDimension($query);
                 break;
-                        
-            }
-        
+
+        }
+
         return $this->collection;
     }
 
+    /**
+     * @throws Exception
+     */
     private function getEpisode(string $query): void
     {
         $query = $this->queryHelper->getEpisode($query);
@@ -50,6 +54,9 @@ class DataCollector
         $this->collection->setInfo($data['info']);
     }
 
+    /**
+     * @throws Exception
+     */
     private function getLocation(string $query): void
     {
         $query = $this->queryHelper->getLocation($query);
@@ -60,6 +67,9 @@ class DataCollector
         $this->collection->setInfo($data['info']);
     }
 
+    /**
+     * @throws Exception
+     */
     private function getDimension(string $query): void
     {
         $query = $this->queryHelper->getDimension($query);
