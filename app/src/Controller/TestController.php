@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Helpers\DataCollector;
 use App\Helpers\QueryHelper;
 use App\Services\GraphQLClient;
 use App\Services\Random;
@@ -27,57 +28,25 @@ class TestController extends AbstractController
     }
 
     #[Route('/show', name: 'show')]
-    public function show(GraphQLClient $client, QueryHelper $queryHelper): Response
+    public function show(DataCollector $collector): Response
     {
+        $type = 'episode';
+        $query = 'Interdimensional Cable 2: Tempting Fate';
+
+        $type = 'location';
+        $query = 'Citadel of Ricks';
+
         $type = 'dimension';
+        $query = 'Unknown';
 
-        switch ($type) {
-            case 'episode':
-                // $episode = 'Pilot';
-                $episode = 'Interdimensional Cable 2: Tempting Fate';
-                $query = $queryHelper->getEpisode($episode);
-                $description = sprintf('Characters in episode "%s"', $episode);
-
-                $data = $client->request('https://rickandmortyapi.com/graphql', $query, 'episodes');
-
-                $results = current($data['results'])['characters'];
-
-                break;
-            case 'location':
-                $location = "Citadel of Ricks";
-                $query = $queryHelper->getLocation($location);
-                $description = sprintf('Characters @ "%s"', $location);
-        
-                $data = $client->request('https://rickandmortyapi.com/graphql', $query, 'locations');
-
-                $results = current($data['results'])['residents'];
-                break;
-
-            case 'dimension':
-                $dimension = "Unknown";
-                $query = $queryHelper->getDimension($dimension);
-                $description = sprintf('Characters in the dimension "%s"', $dimension);
-        
-                $data = $client->request('https://rickandmortyapi.com/graphql', $query, 'locations');
-
-                // Flatten resulting array
-                $results = [];
-                foreach($data['results'] as $part) {
-                    $results += $part['residents'];
-                }
-                // $results = current($data['results'])['residents'];
-                break;
-                        
-            }
-
-
+        $characterCollection = $collector->collect($type, $query);
 
         return $this->render(
             'test/overview.html.twig',
             [
-                'description' => $description,
-                'info' => $data['info'],
-                'results' => $results,
+                'description' => $characterCollection->getDescription(),
+                'info' => $characterCollection->getInfo(),
+                'results' => $characterCollection->getData(),
             ]
         );
     }
