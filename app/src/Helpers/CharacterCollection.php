@@ -25,22 +25,12 @@ class CharacterCollection
             throw new Exception('Set type before description');
         }
 
-        switch ($this->type) {
-            case 'episode':
-                $this->description = sprintf('Characters in episode "%s"', $query);
-
-                break;
-            case 'location':
-                $this->description = sprintf('Characters @ "%s"', $query);
-
-                break;
-            case 'dimension':
-                $this->description = sprintf('Characters in the dimension "%s"', $query);
-
-                break;
-            default:
-                throw new Exception('Unknown type');
-            }
+        $this->description = match ($this->type) {
+            'episode' => sprintf('Characters in episode "%s"', $query),
+            'location' => sprintf('Characters @ "%s"', $query),
+            'dimension' => sprintf('Characters in the dimension "%s"', $query),
+            default => throw new Exception('Unknown type'),
+        };
     }
 
     public function setData(array $data): void 
