@@ -76,6 +76,7 @@ How long did it take me to develop this project. Hopefully this transparency doe
 | wednesday |               2,5 | Autosuggestion                                |
 | thursday  |               1,5 | Typo's, table in markdown, clean up code      |
 | thursday  |               1,5 | Prepare character info card                   |
+| thursday  |                 1 | Implement Autosuggestion                      |
 
 
 
