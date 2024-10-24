@@ -2,10 +2,7 @@
 
 namespace App\Helpers;
 
-use App\Helpers\CharacterCollection;
-use App\Helpers\QueryHelper;
 use App\Services\GraphQLClient;
-use App\Services\Random;
 
 class DataCollector
 {
