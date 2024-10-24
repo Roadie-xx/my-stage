@@ -12,8 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
-#[Route('/test', name: 'test_')]
-class TestController extends AbstractController
+#[Route('/', name: 'default_')]
+class DefaultController extends AbstractController
 {
     /**
      * @throws Exception|TransportExceptionInterface
@@ -35,17 +35,20 @@ class TestController extends AbstractController
     /**
      * @throws Exception
      */
-    #[Route('/show', name: 'show')]
-    public function show(DataCollector $collector): Response
+    #[Route('/show/{type}/{query}', name: 'show')]
+    public function show(string $type, string $query, DataCollector $collector): Response
     {
-        $type = 'episode';
-        $query = 'Interdimensional Cable 2: Tempting Fate';
-
-        $type = 'location';
-        $query = 'Citadel of Ricks';
-
-        $type = 'dimension';
-        $query = 'Unknown';
+        if (! in_array($type, ['episode', 'location', 'dimension'])) {
+            throw new Exception(sprintf('Unknown type: "%s"', $type));
+        }
+//        $type = 'episode';
+//        $query = 'Interdimensional Cable 2: Tempting Fate';
+//
+//        $type = 'location';
+//        $query = 'Citadel of Ricks';
+//
+//        $type = 'dimension';
+//        $query = 'Unknown';
 
         $characterCollection = $collector->collect($type, $query);
 
