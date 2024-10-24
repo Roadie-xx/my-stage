@@ -27,7 +27,7 @@ class DefaultController extends AbstractController
         $info = $client->request('https://rickandmortyapi.com/graphql', $query, 'charactersByIds');
 
         return $this->render(
-            'test/index.html.twig',
+            'default/index.html.twig',
             current($info)
         );
     }
@@ -53,7 +53,7 @@ class DefaultController extends AbstractController
         $characterCollection = $collector->collect($type, $query);
 
         return $this->render(
-            'test/overview.html.twig',
+            'default/overview.html.twig',
             [
                 'description' => $characterCollection->getDescription(),
                 'info' => $characterCollection->getInfo(),
