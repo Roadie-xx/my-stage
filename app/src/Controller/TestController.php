@@ -6,6 +6,7 @@ use App\Helpers\DataCollector;
 use App\Helpers\QueryHelper;
 use App\Services\GraphQLClient;
 use App\Services\Random;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,6 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/test', name: 'test_')]
 class TestController extends AbstractController 
 {
+    /**
+     * @throws Exception
+     */
     #[Route('/', name: 'index')]
     public function index(GraphQLClient $client, QueryHelper $queryHelper): Response
     {
@@ -27,6 +31,9 @@ class TestController extends AbstractController
         );
     }
 
+    /**
+     * @throws Exception
+     */
     #[Route('/show', name: 'show')]
     public function show(DataCollector $collector): Response
     {
