@@ -40,32 +40,32 @@ class CharacterCollection
         };
     }
 
-    public function setData(array $data): void 
+    public function setData(array $data): void
     {
         $this->data = $data;
     }
 
-    public function setInfo(array $info): void 
+    public function setInfo(array $info): void
     {
         $this->info = $info;
     }
 
-    public function getType(): string 
+    public function getType(): string
     {
         return $this->type;
     }
 
-    public function getDescription(): string 
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    public function getData(): array 
+    public function getData(): array
     {
         return $this->data;
     }
 
-    public function getInfo(): array 
+    public function getInfo(): array
     {
         return $this->info;
     }

@@ -35,9 +35,9 @@ class DataCollector
             case 'dimension':
                 $this->getDimension($query);
                 break;
-                        
-            }
-        
+
+        }
+
         return $this->collection;
     }
 

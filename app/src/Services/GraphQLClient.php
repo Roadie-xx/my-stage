@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use \Exception;
+use Exception;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpClient\HttpOptions;
@@ -30,7 +30,7 @@ readonly class GraphQLClient
 
         $response = $this->client->request(
             'POST',
-            $endpoint, 
+            $endpoint,
             $options->toArray()
         );
 
