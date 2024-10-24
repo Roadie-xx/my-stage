@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">{{ name }}</h5>
+                    <h4 class="card-title">{{ name }}</h4>
                     <div class="card-text">
                         <ul class="nav nav-tabs justify-content-end" id="characterInfo" role="tablist">
                             <li class="nav-item" role="presentation">
@@ -48,11 +48,11 @@
                                     <div class="col-9 fw-bold">{{ type }}</div>
                                 </div>
                                 <div class="row mb-1">
-                                    <div class="col-3">First seen</div>
+                                    <div class="col-3">First seen in</div>
                                     <div class="col-9 fw-bold">{{ origin.name }}</div>
                                 </div>
                                 <div class="row mb-1">
-                                    <div class="col-3">Current location</div>
+                                    <div class="col-3">Last known location</div>
                                     <div class="col-9 fw-bold">{{ location.name }}</div>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                    <tr>
                                         <th scope="row">{{ item.episode }}</th>
                                         <td>{{ item.name }}</td>
-                                        <td>{{ item.air_date }}</td>
+                                        <td>{{ item.air_date|date("d-m-Y") }}</td>
                                     </tr>
                                     {% endfor %}
                                     </tbody>
