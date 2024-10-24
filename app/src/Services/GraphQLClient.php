@@ -15,6 +15,7 @@ readonly class GraphQLClient
     }
 
     /**
+     * @return array<string, array<int|string, mixed>>
      * @throws Exception|TransportExceptionInterface
      */
     public function request(string $endpoint, string $query, string $property): array
@@ -37,7 +38,7 @@ readonly class GraphQLClient
         $content = $response->getContent();
         $json = json_decode($content, true, JSON_THROW_ON_ERROR);
 
-        if (! key_exists('data', $json)) {
+        if (! is_array($json) || ! key_exists('data', $json)) {
             throw new Exception('Something went wrong, no usable data returned');
         }
 
