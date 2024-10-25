@@ -20,4 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         wrapper.classList.remove('list');
     });
+
+
+    document.querySelectorAll('[data-character-id="yes"]').forEach(characterButton => {
+        characterButton.addEventListener('click', (event) => {
+            window.location = `/character/${event.currentTarget.dataset.id}`;
+        })
+    })
+
 });

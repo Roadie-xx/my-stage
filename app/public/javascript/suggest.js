@@ -104,7 +104,11 @@ const forward = (event) => {
     const type = event.currentTarget.dataset.type;
     const name = event.currentTarget.dataset.name;
 
-    window.location = `/show/${type}/${encodeURI(name)}`;
+    if (type === 'character' ) {
+        window.location = `/character/${event.currentTarget.dataset.id}`;
+    } else {
+        window.location = `/show/${type}/${encodeURI(name)}`;
+    }
 }
 
 const completeText = () => {
@@ -157,6 +161,7 @@ document.querySelectorAll('#random-search button').forEach(button => {
 
     button.setAttribute('data-type', randomChoice.type);
     button.setAttribute('data-name', randomChoice.name);
+    button.setAttribute('data-id', randomChoice.id);
 
     button.innerHTML = `${icons[randomChoice.type]} ${randomChoice.name}`;
 
