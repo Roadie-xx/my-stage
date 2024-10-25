@@ -46,14 +46,6 @@ class DefaultController extends AbstractController
         if (! in_array($type, ['episode', 'location', 'dimension'])) {
             throw new Exception(sprintf('Unknown type: "%s"', $type));
         }
-        //        $type = 'episode';
-        //        $query = 'Interdimensional Cable 2: Tempting Fate';
-        //
-        //        $type = 'location';
-        //        $query = 'Citadel of Ricks';
-        //
-        //        $type = 'dimension';
-        //        $query = 'Unknown';
 
         $characterCollection = $collector->collect($type, $query);
 
