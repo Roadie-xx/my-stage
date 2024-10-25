@@ -13,7 +13,7 @@ class CharacterCollection
      */
     private array $data;
     /**
-     * @var array<string, mixed> $info
+     * @var array<int|string, mixed> $info
      */
     private array $info;
 
@@ -55,7 +55,7 @@ class CharacterCollection
     }
 
     /**
-     * @param array<string, mixed> $info
+     * @param array<int|string, mixed> $info
      */
     public function setInfo(array $info): void
     {
@@ -81,7 +81,7 @@ class CharacterCollection
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<int|string, mixed>
      */
     public function getInfo(): array
     {

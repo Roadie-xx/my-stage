@@ -25,10 +25,15 @@ class DefaultController extends AbstractController
         $query = $queryHelper->getCharacterInfo($characterId);
 
         $info = $client->request('https://rickandmortyapi.com/graphql', $query, 'charactersByIds');
+        $data = current($info);
+
+        if (!$data) {
+            throw $this->createNotFoundException();
+        }
 
         return $this->render(
             'default/index.html.twig',
-            current($info)
+            $data
         );
     }
 
