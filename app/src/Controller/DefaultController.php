@@ -74,7 +74,7 @@ class DefaultController extends AbstractController
 
     /**
      * @param int $characterId
-     * @return array<string, array<int|string, mixed>>
+     * @return array<int|string, mixed>
      * @throws TransportExceptionInterface
      */
     private function getCharacterData(int $characterId): array
