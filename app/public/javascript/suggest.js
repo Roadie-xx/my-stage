@@ -84,8 +84,7 @@ const search = document.querySelector('#search');
 
 const creatingList = (items) => {
     let createdList = items.map((item) => {
-        // Add icon and id
-        return `<li data-type="item.type" data-name="item.name">${icons[item.type]} ${item.name}</li>`;
+        return `<li data-type="${item.type}" data-name="${item.name}" data-id="${item.id}">${icons[item.type]} ${item.name}</li>`;
     });
 
     let customListItem;
