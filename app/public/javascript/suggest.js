@@ -85,7 +85,7 @@ const search = document.querySelector('#search');
 const creatingList = (items) => {
     let createdList = items.map((item) => {
         // Add icon and id
-        return `<li>${icons[item.type]} ${item.name}</li>`;
+        return `<li data-type="item.type" data-name="item.name">${icons[item.type]} ${item.name}</li>`;
     });
 
     let customListItem;
@@ -101,12 +101,20 @@ const creatingList = (items) => {
     completeText();
 }
 
+const forward = (event) => {
+    const type = event.currentTarget.dataset.type;
+    const name = event.currentTarget.dataset.name;
+
+    window.location = `/show/${type}/${encodeURI(name)}`;
+}
+
 const completeText = () => {
     listGroup.querySelectorAll('li').forEach((list) => {
         list.addEventListener('click', (event) => {
-        console.log(event);
             search.value = event.currentTarget.textContent.trim();
             listGroup.style.display = 'none';
+
+            forward(event);
         });
     });
 }
@@ -148,5 +156,12 @@ document.querySelectorAll('#random-search button').forEach(button => {
 
     const randomChoice = data[Math.floor(Math.random() * data.length)];
 
+    button.setAttribute('data-type', randomChoice.type);
+    button.setAttribute('data-name', randomChoice.name);
+
     button.innerHTML = `${icons[randomChoice.type]} ${randomChoice.name}`;
+
+    button.addEventListener('click', (event) => {
+        forward(event);
+    })
 });
