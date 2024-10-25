@@ -26,17 +26,13 @@ class DataCollector
         switch ($type) {
             case 'episode':
                 $this->getEpisode($query);
-
                 break;
             case 'location':
                 $this->getLocation($query);
-
                 break;
-
             case 'dimension':
                 $this->getDimension($query);
                 break;
-
         }
 
         return $this->collection;
