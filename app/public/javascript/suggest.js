@@ -38,10 +38,10 @@ document.querySelectorAll('.btn-group > .btn').forEach(button => {
 
     let id = button.getAttribute('for');
     document.querySelector(`#${id}`).checked = true;
-    
+
     button.addEventListener('click', (event) => {
         handleToggle(event.currentTarget.getAttribute('for'));
-        
+
         setTimeout(() => {
             buildChoices();
 
@@ -77,58 +77,58 @@ const icons = {
     'dimension' : '<i class="bi bi-stars"></i>',
     'episode' : '<i class="bi bi-film"></i>',
     'location' : '<i class="bi bi-geo-alt-fill"></i>',
-};	
+};
 
 const listGroup = document.querySelector('.list-group');
 const search = document.querySelector('#search');
 
 const creatingList = (items) => {
-let createdList = items.map((item) => {
-    // Add icon and id
-    return `<li>${icons[item.type]} ${item.name}</li>`;
-});
+    let createdList = items.map((item) => {
+        // Add icon and id
+        return `<li>${icons[item.type]} ${item.name}</li>`;
+    });
 
-let customListItem;
+    let customListItem;
 
-if (!createdList.length) {
-    customListItem = `<div>Oops...not found '${search.value}'</div>`;
-} else {
-    customListItem = createdList.join('');
-}
+    if (!createdList.length) {
+        customListItem = `<div>Oops...not found '${search.value}'</div>`;
+    } else {
+        customListItem = createdList.join('');
+    }
 
-listGroup.innerHTML = customListItem;
+    listGroup.innerHTML = customListItem;
 
-completeText();
+    completeText();
 }
 
 const completeText = () => {
-listGroup.querySelectorAll('li').forEach((list) => {
-    list.addEventListener('click', (event) => {
-    console.log(event);
-        search.value = event.currentTarget.textContent.trim();
-        listGroup.style.display = 'none';
+    listGroup.querySelectorAll('li').forEach((list) => {
+        list.addEventListener('click', (event) => {
+        console.log(event);
+            search.value = event.currentTarget.textContent.trim();
+            listGroup.style.display = 'none';
+        });
     });
-});
 }
 
 const hideSuggestions = () => {
-search.parentElement.classList.remove('active');
-listGroup.style.display = 'none';
+    search.parentElement.classList.remove('active');
+    listGroup.style.display = 'none';
 }
 
 const listItemGenerator = () => {
-if (! search.value) {
-    hideSuggestions();
-} else {
-    search.parentElement.classList.add('active');
-    listGroup.style.display = 'block';
+    if (! search.value) {
+        hideSuggestions();
+    } else {
+        search.parentElement.classList.add('active');
+        listGroup.style.display = 'block';
 
-    let searchResults = choices.filter((choice) => {
-        return choice.name.toLowerCase().startsWith(search.value.toLowerCase());
-    });
+        let searchResults = choices.filter((choice) => {
+            return choice.name.toLowerCase().startsWith(search.value.toLowerCase());
+        });
 
-    creatingList(searchResults);
-}
+        creatingList(searchResults);
+    }
 }
 
 search.addEventListener("keyup", listItemGenerator);
@@ -143,10 +143,10 @@ if (!event.target.closest('.list-group') && !event.target.closest('.suggest-grou
 
 
 document.querySelectorAll('#random-search button').forEach(button => {
-const source = button.getAttribute('data-source');
-const data = eval(source); // Bah...
+    const source = button.getAttribute('data-source');
+    const data = eval(source); // Bah...
 
-const randomChoice = data[Math.floor(Math.random() * data.length)];
+    const randomChoice = data[Math.floor(Math.random() * data.length)];
 
-button.innerHTML = `${icons[randomChoice.type]} ${randomChoice.name}`;
+    button.innerHTML = `${icons[randomChoice.type]} ${randomChoice.name}`;
 });
