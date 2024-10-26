@@ -1,4 +1,3 @@
-
 let characters;		
 let episodes;		
 let locations; 
