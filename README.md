@@ -38,11 +38,14 @@ That said, the following branches will be created;
 
 ## Development
 
+### Automatic testing
+
 Normally I would set up systems for (automatic) testing, but for now I decided to skip them. 
 This is basically because it is a time-consuming task.
 
+But with the use of a prefab docker container I was able to run some tests for codestyling and code analyses.
 
-## During Development
+### During Development
 
 First I've tried the Symfony way to use a docker `https://symfony.com/doc/current/setup/docker.html`, but somehow it failed.
 
@@ -55,6 +58,11 @@ This installer created another directory, once I changed that, the container cou
 
 Could not add the ./app directory to my repository. It seems there was a .git folder in the app
 rm -r app/.git/
+
+### AutoSuggest
+
+Since I would create an AutoSuggest system but the API always uses pagination, I decided to cheat.
+Normally I would use the API to respond with suggestions, but now I gathered the data and stored it in JSON-files.
 
 ## Time registration
 How long did it take me to develop this project. Hopefully this transparency doesn't work against me.
@@ -77,12 +85,48 @@ How long did it take me to develop this project. Hopefully this transparency doe
 | thursday  |               1,5 | Typo's, table in markdown, clean up code      |
 | thursday  |               1,5 | Prepare character info card                   |
 | thursday  |                 1 | Implement Autosuggestion                      |
+|  friday   |                 3 | Add interaction (click)                       |
 
 
 
 ## Nice to have improvements
-- Extract css and js from template to files
+- ~~Extract css and js from template to files~~
 
+### Logging pagerequests
+It would be a nice to have to log the page visits. 
+This could be done by using Monolog and require setting up a database connection.
+
+## Frontend Developer Items
+
+### JavaScript
+This solution contains some javascript, based on ES6. 
+It handles the switching between a grid and a table style view.
+
+Also the AutoSuggest is basically build in JS. 
+This is working code, but with more time I probably would refactor that into a javascript class.
+In a perfect world I would also add some tests.
+
+I'm confident I could also deliver this project in a javascript way, which will be clear if you take a look in the Proof of Concept directory.
+
+### Stimulus
+Never heard of this, but Google was helpfull.
+I think I would be able to work with it, but using Stimulus in this project would be too time consumig.
+
+### Webpack
+I only used Webpack once (long ago), but when I read the documentation on Symfony, it said that there is a successor named AssetMapper. 
+So I decided to skip this.
+
+### CSS framework like Tailwind
+Since I never used the Tailwind framework, I used the Bootstrap framework. 
+To my knowlegde there are a lot similarities between them. 
+I think is you understand one of them, you should be able to use the other. 
+But since I did not know all the selector names of Tailwind, I stick with Bootstrap.
+
+## Bonus: Integrate 1 or more additional API's in a creative way
+I've been thinking about this, but could not think of a creative way to implement an API.
+Possibilities were a weather api, a random joke api and a random quote.
+I almost included a lyrics API, to show what music the characters were listening to. 
+But during testing this API it seemed this API was offline.
 
 ## Helpful commands
 ### Build Docker Container
