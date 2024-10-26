@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // List view
         event.preventDefault();
         wrapper.classList.add('list');
     });
@@ -16,8 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // List view
         event.preventDefault();
         wrapper.classList.remove('list');
     });
+
+    document.querySelectorAll('[data-character-id="yes"]').forEach(characterButton => {
+        characterButton.addEventListener('click', (event) => {
+            window.location = `/character/${event.currentTarget.dataset.id}`;
+        })
+    })
 });

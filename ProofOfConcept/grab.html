@@ -1,0 +1,62 @@
+<html>
+<head>
+</head>
+
+<body>
+<pre id="output"></pre>
+<script>
+
+const url = 'https://rickandmortyapi.com/graphql';
+
+const query = (page) => {
+  return `{
+    characters(page: ${page}) {
+	  info {
+	    count,
+		pages,
+		prev,
+		next
+	  }
+	  results {
+		id,
+	    name
+	  }
+    }
+  }`
+};
+
+const data = [];
+
+const fetchPage = async (page) => {
+	document.querySelector('#output').innerHTML += `Fetching page ${page}<br>`;
+	
+	fetch(url, {
+	  method: "POST",
+	  headers: {
+		"Content-Type": "application/json",
+		Accept: "application/json",
+	  },
+	  body: JSON.stringify({
+		query: query(page)
+	  }),
+	})
+	  .then(r => r.json())
+	  .then(json => {
+		let characters = json.data.characters;
+		data.push(...characters.results);
+		
+		if (characters.info.next) {
+			fetchPage(characters.info.next);
+		} else {
+			document.querySelector('#output').innerHTML += JSON.stringify(data, null, 2);
+		}
+	  })
+}	  
+  
+fetchPage(1);
+  
+ </script>
+
+</body>
+
+</html>

@@ -1,3 +1,9 @@
+# For PHPStorm
+/.idea/*
+
+# For testing
+.php-cs-fixer.cache
+
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*

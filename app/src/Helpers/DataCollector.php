@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Services\GraphQLClient;
 use Exception;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class DataCollector
 {
@@ -15,7 +16,7 @@ class DataCollector
     }
 
     /**
-     * @throws Exception
+     * @throws Exception|TransportExceptionInterface
      */
     public function collect(string $type, string $query): CharacterCollection
     {
@@ -25,24 +26,20 @@ class DataCollector
         switch ($type) {
             case 'episode':
                 $this->getEpisode($query);
-
                 break;
             case 'location':
                 $this->getLocation($query);
-
                 break;
-
             case 'dimension':
                 $this->getDimension($query);
                 break;
-
         }
 
         return $this->collection;
     }
 
     /**
-     * @throws Exception
+     * @throws Exception|TransportExceptionInterface
      */
     private function getEpisode(string $query): void
     {
@@ -55,7 +52,7 @@ class DataCollector
     }
 
     /**
-     * @throws Exception
+     * @throws Exception|TransportExceptionInterface
      */
     private function getLocation(string $query): void
     {
@@ -68,7 +65,7 @@ class DataCollector
     }
 
     /**
-     * @throws Exception
+     * @throws Exception|TransportExceptionInterface
      */
     private function getDimension(string $query): void
     {

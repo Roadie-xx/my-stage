@@ -12,6 +12,6 @@
         {{ item.name }} is a '{{ item.species }} ({{ item.status }})' located at '{{ item.location.name }}'.
       </p>
     </div>
-    <button class="card__button">Read more</button>
+    <button data-character-id="yes" data-id="{{ item.id }}" class="card__button">Read more</button>
   </div>
 </article>
